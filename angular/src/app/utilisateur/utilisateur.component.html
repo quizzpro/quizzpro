@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des commerciaux </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="utilisateur.component.css">
+</head>
+<body>
+  <div class="container">
+
+  <div class="table-container">
+    <h1>Gestion des utilisateurs</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th>Adresse</th>
+          <th>Date de naissance</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let utilisateur of utilisateurs">
+          <td>{{ utilisateur.id }}</td>
+          <td>{{ utilisateur.nom }}</td>
+          <td>{{ utilisateur.prenom }}</td>
+          <td>{{ utilisateur.email }}</td>
+          <td>{{ utilisateur.numTel }}</td>
+          <td>{{ utilisateur.adresse }}</td>
+          <td>{{ utilisateur.datenaissance | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ utilisateur.role }}</td>
+          <td>
+            <button (click)="editUtilisateur(utilisateur)" class="icon-button edit-button">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deleteUtilisateur(utilisateur.id)" class="icon-button delete-button">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-container">
+    <h2>{{ isEditMode ? 'Update User' : 'Add User' }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nom">Nom:</label>
+        <input id="nom" [(ngModel)]="currentUtilisateur.nom" name="nom" required />
+      </div>
+      <div>
+        <label for="prenom">Prénom:</label>
+        <input id="prenom" [(ngModel)]="currentUtilisateur.prenom" name="prenom" required />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" [(ngModel)]="currentUtilisateur.email" name="email" required />
+      </div>
+      <div>
+        <label for="numTel">Numéro de téléphone:</label>
+        <input id="numTel" type="tel" [(ngModel)]="currentUtilisateur.numTel" name="numTel" required />
+      </div>
+      <div>
+        <label for="adresse">Adresse:</label>
+        <input id="adresse" [(ngModel)]="currentUtilisateur.adresse" name="adresse" required />
+      </div>
+      <div>
+        <label for="datenaissance">Date de naissance:</label>
+        <input id="datenaissance" type="date" [(ngModel)]="currentUtilisateur.datenaissance" name="datenaissance" required />
+      </div>
+      <div>
+        <label for="password">Mot de passe:</label>
+        <input id="password" type="password" [(ngModel)]="currentUtilisateur.password" name="password" required />
+      </div>
+      <div>
+        <label for="statut">Statut:</label>
+        <select id="statut" [(ngModel)]="currentUtilisateur.statut" name="statut" required>
+          <option value="ACTIF">Actif</option>
+          <option value="INACTIF">Inactif</option>
+          <option value="EN_ATTENTE">En attente</option>
+        </select>
+      </div>
+      <div>
+        <label for="role">Role:</label>
+        <select id="role" [(ngModel)]="currentUtilisateur.role" name="role" required>
+          <option value="COMMERCIAL">commercial</option>
+          <option value="RESPONSABLE_RH">responsable-rh</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        <button type="button" (click)="resetForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
