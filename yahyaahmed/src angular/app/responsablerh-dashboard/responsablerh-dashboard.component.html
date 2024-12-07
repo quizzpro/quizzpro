@@ -1,0 +1,11 @@
+<div class="container mt-5">
+    <h1 class="text-center">Responsable RH Dashboard</h1>
+    <p class="text-center">Bienvenue, {{ user?.name }}</p>
+  
+    <ul class="list-group my-4">
+      <li class="list-group-item"><a routerLink="/profile">Gérer mon profil</a></li>
+    </ul>
+  
+    <button class="btn btn-danger w-100" (click)="logout()">Déconnexion</button>
+  </div>
+  

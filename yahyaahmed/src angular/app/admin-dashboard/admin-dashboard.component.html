@@ -1,0 +1,112 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-center">Bienvenue, {{ user?.name }}</h1>
+
+    <!-- Lien et bouton à droite -->
+    <div class="d-flex gap-3">
+      <a class="btn btn-link" routerLink="/profile">Gérer mon profil</a>
+      <button class="btn btn-success" (click)="addUser()">Ajouter un utilisateur</button>
+    </div>
+  </div>
+
+  <h3 class="text-center">Gestion des Utilisateurs</h3>
+
+
+
+  <table class="table table-bordered mt-3" *ngIf="users.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Nom</th>
+        <th>Téléphone</th>
+        <th>Adresse</th>
+        <th>Date de naissance</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.birthDate | date }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-warning" (click)="editUser(user)">Modifier</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Supprimer</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire de gestion des utilisateurs -->
+  <div *ngIf="selectedUser" class="form-container mt-5">
+    <h2>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un utilisateur</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="input-data">
+          <input
+            [(ngModel)]="selectedUser.name"
+            name="name"
+            type="text"
+            placeholder="Nom"
+            [disabled]="isEditMode"
+            required
+          />
+        </div>
+        <div class="input-data">
+          <input
+            [(ngModel)]="selectedUser.birthDate"
+            name="birthDate"
+            type="date"
+            placeholder="Date de naissance"
+            [disabled]="isEditMode"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="selectedUser.email" name="email" type="email" placeholder="Email" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="selectedUser.phone" name="phone" type="tel" placeholder="Numéro de téléphone" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="selectedUser.address" name="address" type="text" placeholder="Adresse" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="selectedUser.password" name="password" type="password" placeholder="Mot de passe" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <select [(ngModel)]="selectedUser.role" name="role" required>
+            <option value="" disabled selected>Choisir un rôle</option>
+            <option value="COMMERCIAL">Commercial</option>
+            <option value="RESPONSABLERH">Responsable RH</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row submit-btn">
+        <button type="submit" class="btn">{{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}</button>
+      </div>
+    </form>
+  </div>
+
+  <button class="btn btn-danger w-100 mt-3" (click)="logout()">Déconnexion</button>
+</div>

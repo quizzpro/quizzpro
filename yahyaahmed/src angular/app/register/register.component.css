@@ -1,0 +1,22 @@
+.compact-form .row {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .compact-form .col-md-6 {
+    flex: 1;
+  }
+  
+  .compact-form .form-control {
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+  .compact-form label {
+    font-size: 13px;
+  }
+  
+  button {
+    padding: 8px 10px;
+  }
+  
