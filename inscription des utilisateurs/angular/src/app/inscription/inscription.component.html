@@ -1,0 +1,222 @@
+<div class="container mt-4">
+  <h1 class="text-center">Bienvenue sur Quizz Pro</h1>
+
+  <!-- Boutons pour choisir le type d'utilisateur -->
+  <div class="d-flex justify-content-center my-4">
+    <button class="btn btn-primary mx-2" (click)="setUserType('commercial')">
+      S'inscrire (Commercial)
+    </button>
+    <button class="btn btn-success mx-2" (click)="setUserType('responsablerh')">
+      S'inscrire (Responsable RH)
+    </button>
+  </div>
+
+  <!-- Formulaire Commercial -->
+  <div *ngIf="userType === 'commercial'" class="card p-4">
+    <h3 class="text-center">Formulaire d'inscription - Commercial</h3>
+    <form (ngSubmit)="onSubmit()" #commercialForm="ngForm">
+    
+      
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom:</label>
+        <input
+          id="nom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="commercial.nom"
+          name="nom"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="prenom" class="form-label">Prénom:</label>
+        <input
+          id="prenom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="commercial.prenom"
+          name="prenom"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail:</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          [(ngModel)]="commercial.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe:</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          [(ngModel)]="commercial.password"
+          name="password"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="numero" class="form-label">Numéro:</label>
+        <input
+          id="numero"
+          type="text"
+          class="form-control"
+          [(ngModel)]="commercial.num"
+          name="numero"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="adresse" class="form-label">Adresse:</label>
+        <input
+          id="adresse"
+          type="text"
+          class="form-control"
+          [(ngModel)]="commercial.adresse"
+          name="adresse"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="datenaissance" class="form-label">Date de naissance:</label>
+        <input
+          id="datenaissance"
+          type="date"
+          class="form-control"
+          [(ngModel)]="commercial.datenaissance"
+          name="datenaissance"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="statut" class="form-label">Statut:</label>
+        <input
+          id="statut"
+          type="text"
+          class="form-control"
+          [(ngModel)]="commercial.statut"
+          name="statut"
+          value="INACTIF"
+          readonly
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="commercialForm.invalid"
+      >
+        S'inscrire
+      </button>
+    </form>
+  </div>
+
+  <!-- Formulaire Responsable RH -->
+  <div *ngIf="userType === 'responsablerh'" class="card p-4">
+    <h3 class="text-center">Formulaire d'inscription - Responsable RH</h3>
+    <form (ngSubmit)="onSubmit()" #responsableRHForm="ngForm">
+
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom:</label>
+        <input
+          id="nom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="responsableRH.nom"
+          name="nom"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="prenom" class="form-label">Prénom:</label>
+        <input
+          id="prenom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="responsableRH.prenom"
+          name="prenom"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail:</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          [(ngModel)]="responsableRH.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe:</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          [(ngModel)]="responsableRH.password"
+          name="password"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="num" class="form-label">num:</label>
+        <input
+          id="num"
+          type="text"
+          class="form-control"
+          [(ngModel)]="responsableRH.num"
+          name="num"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="adresse" class="form-label">Adresse:</label>
+        <input
+          id="adresse"
+          type="text"
+          class="form-control"
+          [(ngModel)]="responsableRH.adresse"
+          name="adresse"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="datenaissance" class="form-label">Date de naissance:</label>
+        <input
+          id="datenaissance"
+          type="date"
+          class="form-control"
+          [(ngModel)]="responsableRH.datenaissance"
+          name="datenaissance"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="statut" class="form-label">Statut:</label>
+        <input
+          id="statut"
+          type="text"
+          class="form-control"
+          [(ngModel)]="responsableRH.statut"
+          name="statut"
+          value="INACTIF"
+          readonly
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        [disabled]="responsableRHForm.invalid"
+      >
+        S'inscrire
+      </button>
+    </form>
+  </div>
+</div>

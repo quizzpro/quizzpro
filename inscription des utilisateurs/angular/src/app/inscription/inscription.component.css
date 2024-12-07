@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 5px;
+  background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+}
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Header styling */
+  h1 {
+    color: #1a1b1c;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+  }
+  
+  /* Button styling */
+  .btn {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+  }
+  
+
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    color: white;
+  }
+  
+ 
+  
+  /* Form card styling */
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .card h3 {
+    font-size: 1.8rem;
+    color: #ab34b8;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .text-danger {
+    font-size: 0.875rem;
+    color: #ab34b8;
+  }
+  
+  button[disabled] {
+    background-color: #070707;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .card {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .btn {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+  
